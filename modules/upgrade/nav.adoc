@@ -1,8 +1,11 @@
 .Upgrade
 * xref:upgrading-che.adoc[]
+** xref:upgrade-overview.adoc[]
+** xref:pre-upgrade-checklist.adoc[]
 ** xref:specifying-the-update-approval-strategy.adoc[]
 ** xref:upgrading-che-using-the-web-console.adoc[]
 ** xref:upgrading-che-using-the-cli-management-tool.adoc[]
 ** xref:upgrading-che-using-the-cli-management-tool-in-restricted-environment.adoc[]
 ** xref:upgrading-the-chectl-management-tool.adoc[]
+** xref:verify-upgrade-completed.adoc[]
 ** xref:repairing-the-devworkspace-operator-on-openshift.adoc[]

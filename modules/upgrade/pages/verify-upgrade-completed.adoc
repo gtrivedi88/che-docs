@@ -1,0 +1,61 @@
+:_content-type: PROCEDURE
+:description: Verify that all components are running the new version and that the platform is functional after upgrading.
+:keywords: upgrade, verify, post-upgrade, validation
+:navtitle: Verify the upgrade completed successfully
+
+[id="verify-upgrade-completed"]
+= Verify the upgrade completed successfully
+
+[role="_abstract"]
+Verify that all {prod-short} components are running the new version and that the platform is functional so that you can confirm the upgrade succeeded before notifying developers.
+
+.Prerequisites
+
+* You have an active `{orch-cli}` session with administrative permissions to the {orch-name} cluster. See {orch-cli-link}.
+
+.Procedure
+
+. Verify that the {prod-short} Operator shows the expected version and `Succeeded` phase:
++
+[source,bash,subs="+attributes"]
+----
+$ {orch-cli} get csv -n {prod-namespace} -o custom-columns='NAME:.metadata.name,PHASE:.status.phase,VERSION:.spec.version'
+----
++
+The {prod-short} Operator CSV should show `Succeeded` phase with the expected version.
+
+. Verify that the `CheCluster` custom resource reports `Active` phase and the correct version:
++
+[source,bash,subs="+attributes"]
+----
+$ {orch-cli} get checluster {prod-id-short} -n {prod-namespace} -o jsonpath='Phase: {.status.chePhase}, Version: {.status.cheVersion}'
+----
+
+. Verify that all {prod-short} pods in the `{prod-namespace}` namespace are running and ready:
++
+[source,bash,subs="+attributes"]
+----
+$ {orch-cli} get pods -n {prod-namespace}
+----
++
+All pods should show `Running` status with all containers ready.
+
+. Verify that the {prod-short} dashboard is accessible:
++
+[source,bash,subs="+attributes"]
+----
+$ {orch-cli} get checluster {prod-id-short} -n {prod-namespace} -o jsonpath='{.status.cheURL}'
+----
++
+Open the returned URL in a browser and confirm the login page loads.
+
+. Verify that the {devworkspace} Operator is running the expected version:
++
+[source,bash,subs="+attributes"]
+----
+$ {orch-cli} get csv | grep devworkspace
+----
++
+The {devworkspace} Operator CSV should show `Succeeded` phase.
+
+. Start a test workspace to confirm that workspaces function correctly after the upgrade.

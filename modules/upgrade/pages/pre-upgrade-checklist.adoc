@@ -1,0 +1,30 @@
+:_content-type: REFERENCE
+:description: Complete this checklist before upgrading to ensure no work is lost and the upgrade proceeds without errors.
+:keywords: upgrade, checklist, pre-upgrade, planning
+:navtitle: Pre-upgrade checklist
+
+[id="pre-upgrade-checklist"]
+= Pre-upgrade checklist
+
+[role="_abstract"]
+Complete the following checklist before upgrading {prod-short} so that no work is lost and the upgrade proceeds without errors.
+
+[cols="1,3",options="header"]
+|===
+| Step | Action
+
+| 1
+| Review the release notes for breaking changes and new features.
+
+| 2
+| Notify developers to save and push all uncommitted work in their running workspaces.
+
+| 3
+| Stop all running workspaces. The upgrade does not automatically stop workspaces, and running workspaces might encounter errors during the upgrade.
+
+| 4
+| If you plan to upgrade from the command line, install `{prod-cli}` version {prod-ver}. See xref:install:installing-the-chectl-management-tool.adoc[].
+
+| 5
+| Verify the current {prod-short} Operator subscription and update approval strategy. See xref:specifying-the-update-approval-strategy.adoc[].
+|===

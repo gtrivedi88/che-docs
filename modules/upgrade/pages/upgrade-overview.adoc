@@ -1,0 +1,33 @@
+:_content-type: CONCEPT
+:description: Plan your upgrade by reviewing supported paths, choosing an approval strategy, and completing the pre-upgrade checklist.
+:keywords: upgrade, update, plan, checklist
+:navtitle: How the upgrade works
+
+[id="upgrade-overview"]
+= How the upgrade works
+
+[role="_abstract"]
+Understand what happens during an {prod-short} upgrade so that you can plan the timing, communicate downtime expectations, and verify the result.
+
+When you upgrade {prod-short}, the Operator handles the server component upgrade automatically. You do not need to manually update individual pods or configurations. The Operator:
+
+* Replaces the {prod-short} server, dashboard, gateway, and plug-in registry pods with the new version.
+* Upgrades the {devworkspace} Operator to the version bundled with the new release.
+* Preserves the existing `CheCluster` custom resource configuration.
+
+Running workspaces are not automatically restarted during the upgrade. Developers must stop their workspaces before the upgrade and restart them after the upgrade completes.
+
+== Supported upgrade path
+
+{prod-short} supports upgrading from the previous minor version to the current version.
+
+Direct upgrades that skip minor versions are not supported. If your deployment is more than one minor version behind, upgrade one minor version at a time.
+
+== What's new in this release
+
+Review the release notes before upgrading to understand new features, bug fixes, and any changes that might affect your deployment.
+
+.Additional resources
+
+* link:https://github.com/eclipse/che/blob/{project-context}/CHANGELOG.md[{prod-short} release changelog]
+* xref:pre-upgrade-checklist.adoc[]
